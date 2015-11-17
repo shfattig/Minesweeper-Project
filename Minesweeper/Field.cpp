@@ -1,6 +1,7 @@
 #include "Field.h"
 
 void Field::generateField(int difficulty) { //builds the minefield
+	Fl_JPEG_Image hellboy("hell_boy.jpg");
 	for (int i = 0; i < difficulty; ++i) { //generates a 2D vector of objects of class Square
 		vector<Square*> A;
 		mineField.push_back(A);

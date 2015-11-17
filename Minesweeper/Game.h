@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Board.h"
+#include "Field.h"
 #include <iostream>
 
 class Game {   	
 	enum difficulty { EASY, MEDIUM, HARD, LUDICROUS_SPEED };
-	Board gameBoard;
+	Field gameBoard;
 	int menuSelect;
 	int boardSize;
 	int uncoveredSquares;

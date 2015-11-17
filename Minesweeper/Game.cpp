@@ -12,11 +12,7 @@ void Game::printMenu()
 
 void Game::setDifficulty(int a)
 {
-	switch (a) {
-	case EASY:
 
-
-}
 
 }
 
