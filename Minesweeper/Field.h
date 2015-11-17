@@ -19,5 +19,4 @@ public:
 	void generateField(int difficulty);
 	vector <vector <Square*> > getField();
 	void uncoverSquares();
-	void printBoard();
 };

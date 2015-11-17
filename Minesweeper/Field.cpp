@@ -48,6 +48,3 @@ void Field::uncoverSquares()
 {
 }
 
-void Field::printBoard()
-{
-}
