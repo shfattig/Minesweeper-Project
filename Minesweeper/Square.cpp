@@ -1,10 +1,20 @@
 #include "Square.h"
 
-void Square::setState()
+void Square::setState(State state)
 {
+	this->state = state;
 }
 
-int Square::getState(Square s)
+State Square::getState()
 {
-	return 0;
+	return this->state;
+}
+
+bool Square::checkIfMine()
+{
+	if (this->state = MINE) {
+		return true;
+	}
+	else
+		return false;
 }
