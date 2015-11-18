@@ -11,6 +11,11 @@ void square_cb(Fl_Widget* obj, void*) { //square callback. needs to be updated.
 }
 
 int main(int argc, char **argv) {
+
+	Game game;
+	game.printMenu();
+	game.processSelection();
+
 	Fl_JPEG_Image hellboy("hell_boy.jpg");
 	if (hellboy.w() == 0 || hellboy.h() == 0 || hellboy.d() == 0) { //check to see if image opened.
 		cerr << "ERROR loading \"hell_boy.jpg\"" << endl;

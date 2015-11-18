@@ -11,8 +11,8 @@ class Game {
 	int uncoveredSquares;
 	int minePercent;
 public:
+	void processSelection();
 	void printMenu();
-	void setDifficulty(int a);
 	int getDifficulty();
 	void setMinePercent(int	minePercent);
 	void setBoardSize(int boardSize);

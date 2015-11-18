@@ -2,18 +2,17 @@
 
 void Game::printMenu()
 {
-	int a;
 	cout << "Let's play a game My Pretty!!" << endl << endl;
 	cout << "Enter difficulty: ";
-	cin >> a;
-	setDifficulty(a);
+	
 	
 }
 
-void Game::setDifficulty(int a)
-{
+void Game::processSelection() {
 
-
+	int difficulty;
+	cin >> difficulty;
+	gameBoard.generateField(difficulty);
 }
 
 int Game::getDifficulty()
