@@ -8,11 +8,22 @@ void Game::printMenu()
 	
 }
 
+
+
+void Game::getField(Difficulty difficulty)
+{
+	for (int i = 0; i < difficulty; ++i) { //makes a callback for each square of the field
+		for (int j = 0; j < difficulty; ++j) {
+			mineField.getField().at(i).at(j)->callback(square_cb);
+		}
+	}
+}
+
 void Game::processSelection() {
 
 	int difficulty;
 	cin >> difficulty;
-	gameBoard.generateField(difficulty);
+	mineField.generateField(difficulty);
 }
 
 int Game::getDifficulty()

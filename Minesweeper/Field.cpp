@@ -9,10 +9,13 @@ void Field::generateField(int difficulty) { //builds the minefield
 		break;
 	case 2:
 		size = MEDIUM;
+		break;
 	case 3:
 		size = HARD;
+		break;
 	case 4:
 		size = LUDICRIS_SPEED;
+		break;
 	}
 
 	Fl_JPEG_Image hellboy("hell_boy.jpg");

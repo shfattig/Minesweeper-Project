@@ -6,6 +6,9 @@
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Button.H>
 #include <FL/Fl_JPEG_Image.h>
+#include <iostream>
+
+using namespace std;
 
 enum State {
 	OPEN = 0, ONE = 1, TWO = 2, THREE = 3, FOUR = 4, FIVE = 5, SIX = 6,
@@ -17,6 +20,7 @@ class Square : public Fl_Button {
 	bool covered;
 
 public:
+	void square_cb(Fl_Widget* obj, void*);
 	Square(int x, int y, int w, int h) : Fl_Button(x, y, w, h) {};
 	void setState(State state);
 	State getState();
