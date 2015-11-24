@@ -17,6 +17,6 @@ class Field {
 	
 public:
 	void generateField(int difficulty);
-	vector <vector <Square*> > getField();
+	vector <vector <Square*> > getMineField();
 	void uncoverSquares();
 };

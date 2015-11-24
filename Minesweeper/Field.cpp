@@ -2,7 +2,7 @@
 
 void Field::generateField(int difficulty) { //builds the minefield
 
-	int size = 0;
+	int size = 0;  //sets size of field based on difficulty
 	switch (difficulty) {
 	case 1:
 		size = EASY;
@@ -32,7 +32,6 @@ void Field::generateField(int difficulty) { //builds the minefield
 		for (int j = 0; j < size; ++j) {
 			if ((rand() % 100) < 15) {
 				mineField.at(i).at(j)->setState(MINE);
-				mineField.at(i).at(j)->deimage(hellboy);
 			}
 		}
 	}
@@ -42,10 +41,14 @@ void Field::generateField(int difficulty) { //builds the minefield
 			if (mineField.at(i).at(j)->getState() == MINE) {
 				for (int m = -1; m <= 1; ++m) {
 					for (int n = -1; n <= 1; ++n) {
-						if (m == 0 && n == 0) {
+						if (i < 0 || j < 0 || (m == 0 && n == 0) || i == size || j == size || (n == -1 && j == 0) || (m == -1 & i == 0) || (n == 1 && j == (size - 1)) || (m == 1 && i == (size - 1))) {
 						}
-						else {
-							//mineField.at(i + m).at(j + n)->setState(State(mineField.at(i + m).at(j + n)->getState() + 1));
+						else  {
+							if (mineField.at(i + m).at(j + n)->getState() == MINE) {
+							}
+							else {
+								mineField.at(i + m).at(j + n)->setState(State(mineField.at(i + m).at(j + n)->getState() + 1));
+							}
 						}
 					}
 				}
@@ -55,7 +58,7 @@ void Field::generateField(int difficulty) { //builds the minefield
 
 }
 
-vector<vector<Square*>> Field::getField()
+vector<vector<Square*>> Field::getMineField()
 {
 	return mineField;
 }

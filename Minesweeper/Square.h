@@ -20,7 +20,6 @@ class Square : public Fl_Button {
 	bool covered;
 
 public:
-	void square_cb(Fl_Widget* obj, void*);
 	Square(int x, int y, int w, int h) : Fl_Button(x, y, w, h) {};
 	void setState(State state);
 	State getState();

@@ -10,13 +10,13 @@
 #include <FL/Fl_JPEG_Image.h>
 
 class Game {   	
-	Field mineField;
+	Field field;
 	int menuSelect;
 	int boardSize;
 	int uncoveredSquares;
 	int minePercent;
 public:
-	void getField(Difficulty difficulty);
+	Field getField();
 	void processSelection();
 	void printMenu();
 	int getDifficulty();
