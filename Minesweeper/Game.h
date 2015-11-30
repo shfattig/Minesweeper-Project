@@ -16,8 +16,8 @@ class Game {
 	int uncoveredSquares;
 	int minePercent;
 public:
-	void getField(Difficulty difficulty);
-	void processSelection();
+	//void getField(Difficulty difficulty);
+	//void processSelection();
 	void printMenu();
 	int getDifficulty();
 	void setMinePercent(int	minePercent);

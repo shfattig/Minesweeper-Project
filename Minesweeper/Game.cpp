@@ -1,3 +1,4 @@
+#pragma once
 #include "Game.h"
 
 void Game::printMenu()
@@ -9,7 +10,7 @@ void Game::printMenu()
 }
 
 
-
+/*
 void Game::getField(Difficulty difficulty)
 {
 	for (int i = 0; i < difficulty; ++i) { //makes a callback for each square of the field
@@ -18,13 +19,16 @@ void Game::getField(Difficulty difficulty)
 		}
 	}
 }
+*/
 
+/*
 void Game::processSelection() {
 
 	int difficulty;
 	cin >> difficulty;
 	mineField.generateField(difficulty);
 }
+*/
 
 int Game::getDifficulty()
 {
