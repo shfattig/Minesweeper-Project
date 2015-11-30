@@ -23,7 +23,5 @@ public:
 	void setMinePercent(int	minePercent);
 	void setBoardSize(int boardSize);
 	int getBoardSize();
-	bool start();
-	bool exit();
 	bool checkWin();
 };

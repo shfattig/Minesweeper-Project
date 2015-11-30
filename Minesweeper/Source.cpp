@@ -58,11 +58,12 @@ int main(int argc, char **argv) {
 	srand(time(0)); //seed randomizer
 	Difficulty difficulty = EASY; //hardcoded for now, eventually will be a menu option
 	Field mineField;
-	Fl_Window *window = new Fl_Window(difficulty * 20, difficulty * 20);
+	Fl_Window *window = new Fl_Window(difficulty * 40, difficulty * 40);
 	
 	
 	game.printMenu();
 	game.processSelection();
+	assignPics(game.getField(), game.getField().getDifficulty(), hellboy, one, two, three, four, five, six, seven, eight);
 
 	for (int i = 0; i < difficulty; ++i) { //makes a callback for each square of the field
 		for (int j = 0; j < difficulty; ++j) {

@@ -14,8 +14,11 @@ enum Difficulty { EASY = 10, MEDIUM = 15, HARD = 20, LUDICRIS_SPEED = 45 }; //va
 
 class Field {
 	vector <vector <Square*> > mineField;
+	Difficulty difficulty;
 	
 public:
+	void setDifficulty(Difficulty difficulty);
+	Difficulty getDifficulty();
 	void generateField(int difficulty);
 	vector <vector <Square*> > getMineField();
 	void uncoverSquares();

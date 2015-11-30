@@ -1,20 +1,35 @@
 #include "Field.h"
 
+void Field::setDifficulty(Difficulty difficulty)
+{
+	this->difficulty = difficulty;
+	return;
+}
+
+Difficulty Field::getDifficulty()
+{
+	return this->difficulty;
+}
+
 void Field::generateField(int difficulty) { //builds the minefield
 
 	int size = 0;  //sets size of field based on difficulty
 	switch (difficulty) {
 	case 1:
 		size = EASY;
+		setDifficulty(EASY);
 		break;
 	case 2:
 		size = MEDIUM;
+		setDifficulty(MEDIUM);
 		break;
 	case 3:
 		size = HARD;
+		setDifficulty(HARD);
 		break;
 	case 4:
 		size = LUDICRIS_SPEED;
+		setDifficulty(LUDICRIS_SPEED);
 		break;
 	}
 
