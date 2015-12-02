@@ -16,10 +16,16 @@ using namespace std;
 class Field {
 private:
 	vector< vector<Square*> > vectorField;
-
+	int difficulty;
+	int squaresLeft;
+	int totMines;
 
 public:
+	void setDifficulty(int difficulty);
 	void generateField(int difficulty);
 	vector< vector< Square*> > getMineField();
-
+	void doubleClick(int iColumn, int jRow);
+	void loseGame();
+	void winGame();
+	bool checkWin();
 };
