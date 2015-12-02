@@ -33,9 +33,9 @@ enum Difficulty { EASY = 10, MEDIUM = 15, HARD = 20, LUDICRIS_SPEED = 45 }; //va
 class Square : public Fl_Button {
 private: 
 	State state;
-	bool cover;
-	bool Flag;
-
+	bool cover = true;
+	bool Flag = false;
+	bool Q = false;
 
 public:
 	Square(int x, int y, int w, int h) : Fl_Button(x, y, w, h) {};
@@ -43,6 +43,7 @@ public:
 	State getState();
 	bool checkIfCovered();
 	bool checkFlag();
+	bool checkQ();
 	void Square::checkPics(Fl_JPEG_Image* hellboy, Fl_JPEG_Image* one, Fl_JPEG_Image* two, Fl_JPEG_Image* three, Fl_JPEG_Image* four, Fl_JPEG_Image* five,
 		Fl_JPEG_Image* six, Fl_JPEG_Image* seven, Fl_JPEG_Image* eight);
 	int handle(int event) {
@@ -64,7 +65,7 @@ public:
 				/*check images */
 				checkPics(hellboy, one, two, three, four, five, six, seven, eight);
 
-				if (checkFlag()) {   //prevent uncover if flagged
+				if (checkFlag() || checkQ()) {   //prevent uncover if flagged or unknown
 					return 1;
 				}
 
@@ -113,9 +114,26 @@ public:
 
 				cout << "A square has been uncovered" << endl;
 			}
-			if (Fl::event_button() == FL_RIGHT_MOUSE) {
-				switch (getState()) {
-
+			if (cover) {
+				if (Fl::event_button() == FL_RIGHT_MOUSE) {
+					if (!checkFlag() && !checkQ()) {
+						Flag = true;
+						Fl_JPEG_Image flag("flag.jpg");
+						image(flag.copy(20, 20));
+						redraw();
+					}
+					else if (!checkQ() && checkFlag()) {
+						Q = true;
+						Flag = false;
+						Fl_JPEG_Image Q("Q.jpg");
+						image(Q.copy(20, 20));
+						redraw();
+					}
+					else if (checkQ() && !checkFlag()) {
+						Q = false;
+						Fl_Image(20, 20, 0);
+						redraw();
+					}
 				}
 			}
 		}
