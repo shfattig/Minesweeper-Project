@@ -23,9 +23,15 @@ using namespace std;
 //Fl_JPEG_Image seven("seven.jpg");
 //Fl_JPEG_Image eight("eight.jpg");
 
+void Field::setDifficulty(int difficulty) {
+	this->difficulty = difficulty;
+}
+
+
 void Field::generateField(int difficulty) {
 	
-	
+	setDifficulty(difficulty);
+	totMines = 0;
 	
 	//generates a 2D vector of objects of class Square
 	for (int i = 0; i < difficulty; ++i) {
@@ -43,9 +49,11 @@ void Field::generateField(int difficulty) {
 		for (int j = 0; j < difficulty; ++j) {
 			if ((rand() % 100) < 15) { // %15 probability of being a mine
 				vectorField.at(i).at(j)->setState(MINE);
+				totMines++;    //increment total number of mines
 			}
 		}
 	}
+	squaresLeft = difficulty*difficulty - totMines;    //calculate number of open squares
 
 	//sets non-mine squares to state of the number of adjacent mines. 
 	for (int i = 0; i < difficulty; ++i) { //first loops go through each square
@@ -74,4 +82,56 @@ void Field::generateField(int difficulty) {
 
 vector< vector< Square*> > Field::getMineField() {
 	return vectorField;
+}
+
+void Field::doubleClick(int iColumn, int jRow)
+{
+	int flagCount = 0;
+	
+	for (int m = -1; m <= 1; ++m) {												//these loops go through every square around a mine
+		for (int n = -1; n <= 1; ++n) {
+			if ((m == 0 && n == 0) || (m == -1 && iColumn == 0) || (n == -1 && jRow == 0) || (m == 1 && iColumn == (difficulty - 1)) || (n == 1 && jRow == (difficulty - 1))) { //exceptions/border cases
+			}
+			else {
+				if (vectorField.at(iColumn + m).at(jRow + n)->checkFlag()) {					//count number of adjacent flags
+					++flagCount;
+				}
+			}
+		}
+	}
+
+	if (flagCount == vectorField.at(iColumn).at(jRow)->getState()) {   //proceed only if flagCount == number of adjacent mines
+		for (int m = -1; m <= 1; ++m) {												//these loops go through every square around a mine
+			for (int n = -1; n <= 1; ++n) {
+				if ((m == 0 && n == 0) || (m == -1 && iColumn == 0) || (n == -1 && jRow == 0) || (m == 1 && iColumn == (difficulty - 1)) || (n == 1 && jRow == (difficulty - 1))) { //exceptions/border cases
+				}
+				else {
+					if (vectorField.at(iColumn + m).at(jRow + n)->getState() == MINE) {
+						loseGame();   //game over if mine is uncovered
+						return;   //FIXME is this needed?
+					}
+					else {
+						//uncover square if open or a number
+						//vectorField.at(iColumn + m).at(jRow + n)->callback(square_cb);
+					}
+				}
+			}
+		}
+	}
+	return;
+}
+
+bool Field::checkWin() {
+	if (squaresLeft == 0) {  //if all open squares are uncovered
+		winGame();
+	}
+	return false;
+}
+
+void Field::loseGame() {
+	cout << "You lost" << endl;
+}
+
+void Field::winGame() {
+	cout << "You won" << endl;
 }
