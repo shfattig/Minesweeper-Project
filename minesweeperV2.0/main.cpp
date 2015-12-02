@@ -19,8 +19,6 @@ bool DEBUG = false;
 
 
 void assignPics(Field mineField, Difficulty difficulty);
-void checkPics(Fl_JPEG_Image* hellboy, Fl_JPEG_Image* one, Fl_JPEG_Image* two, Fl_JPEG_Image* three, Fl_JPEG_Image* four, Fl_JPEG_Image* five,
-	Fl_JPEG_Image* six, Fl_JPEG_Image* seven, Fl_JPEG_Image* eight);
 void quit_cb(Fl_Widget*, void*);
 void easy_cb(Fl_Widget* widget, void* );
 void med_cb(Fl_Widget* widget, void* mineField);
