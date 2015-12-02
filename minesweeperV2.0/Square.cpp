@@ -29,6 +29,11 @@ bool Square::checkFlag()
 	return Flag;
 }
 
+bool Square::checkQ()
+{
+	return Q;
+}
+
 void Square::checkPics(Fl_JPEG_Image* hellboy, Fl_JPEG_Image* one, Fl_JPEG_Image* two, Fl_JPEG_Image* three, Fl_JPEG_Image* four, Fl_JPEG_Image* five,
 	Fl_JPEG_Image* six, Fl_JPEG_Image* seven, Fl_JPEG_Image* eight) {
 		{
